@@ -1,0 +1,269 @@
+
+%% stripped down version of "bare_jrnl.tex" for use in Casey's Circuits I class.
+%% Original version has very good comments for use. You should check it out at
+%% http://www.ieee.org/publications_standards/publications/authors/authors_journals.html
+%% I run GNU/Linux so I downloaded the "Unix LaTeX2e Transactions Style File" package
+%% and based my work off of the sample tex file named "bare_jrnl.tex".
+
+% original author info below (this guy's a rockstar for making his comments so easy to use :P)
+%% 2007/01/11
+%% by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+
+\documentclass[journal]{IEEEtran}
+% make sure "IEEEtran.cls" is in the path of the tex file you are working on
+
+%graphics package for adding images
+\ifCLASSINFOpdf
+  \usepackage[pdftex]{graphicx}
+\else
+   \usepackage[dvips]{graphicx}
+\fi
+
+%math package for math equations
+\usepackage[cmex10]{amsmath}
+
+% There are TONS of other packages you can use for various different cases.
+% Bibliographys are big in research papers but not important for lab reports
+% (I think...?). So I haven't included any bibliography code
+
+\begin{document}
+
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Lab One: Resistors in Series}
+\author{Preston~Maness}
+
+% header
+\markboth{Texas State University, Dr. Casey, EE2400, Spring 2012}%
+{}
+
+% make the title area
+\maketitle
+
+% Give the abstract of your lab here
+\begin{abstract}
+An investigation into the voltages across resistors in series, when powered by a constant 5V source, was undertaken. First, a determination of the theoretical values given ideal components and conditions was completed. Then, experiments were run utilizing the components, a breadboard, a DC power supply and a DMM. Finally, a comparison was made between the ideal values and observed values.
+\end{abstract}
+
+% Split your lab report into sections by calling \section{Section name}
+\section{Introduction}
+\IEEEPARstart{T}{his} lab studies resistors in series, and the various measurements across them. It intends to verify Ohm's Law. It also intends to determine the maximum voltage that can be applied from the voltage source before a resistor suffers catastrophic failure. A schematic is below
+
+% Add an image (the schematic)
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=.5]{series-final.png}
+\caption{Schematic}
+\label{fig_schem}
+\end{figure}
+
+The ideal values, as determined by the given voltage and color-coded values on the resistors, are summarized in the following table
+
+% first table. ideal values of components.
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+\caption{Ideal Component Values}
+\label{table_ideal}
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Component Name & Component Value\\
+\hline
+V1 & 5V\\
+\hline
+R1 & 3,600,000 $\Omega$\\
+\hline
+R2 & 620 $\Omega$\\
+\hline
+R3 & 2.2 $\Omega$\\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Pre-lab Calculations}
+
+The current in the circuit must be calculated first. Observe that in series circuits, the
+current is the same across each element. This permits finding the current by regression to 
+a simpler circuit. 
+
+% use align when you have several lines of work, as in proofs and showing work and the like
+\begin{align*}
+I&=\frac{V}{\Sigma\,R}\\
+&=\frac{V}{R1+R2+R3}\\
+&=\frac{5\,V}{3,600,000 \Omega + 620 \Omega + 2.2 \Omega}\\
+&=1.389\,\mu A
+\end{align*}
+
+The resulting voltages, powers, and current are summarized in the following table
+
+% table for ideal voltages, resistances, and current
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+\caption{Ideal Component Voltage, Power, and Current}
+\label{table_ideal_vri}
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+Component Name & Voltage & Power & Current\\
+\hline
+V1 & 5.000 V & 6.945 $\mu$W & 1.389 $\mu$A\\
+\hline
+R1 & 5.000 V & 6.945 $\mu$W & 1.389 $\mu$A\\
+\hline
+R2 & .8612 mV & 1.196 nW & 1.389 $\mu$A\\
+\hline
+R3 & 3.056 $\mu$V & 4.245 pW & 1.389 $\mu$A\\
+\hline
+\end{tabular}
+\end{table}
+
+No resistor will exceed the maximum of .25 Watts based on these calculations.
+
+The maximum working voltage formula is below (see Appendix for derivation)
+
+\begin{align*}
+V_{max}&=\left(R_{1}+R_{2}+R_{3}\right)\cdot\sqrt{\frac{.25W}{R_{1}}}\\
+&=\left(3,600,000 \Omega + 620 \Omega + 2.2 \Omega\right)\cdot\sqrt{\frac{.25W}{3,600,000 \Omega}}\\
+&\approx 948.8 V
+\end{align*}
+
+\section{Experimental Procedure}
+
+Follow the given procedure to collect the relevant data.
+
+% Use enumerate to give numbered lists
+\begin{enumerate}
+\item
+Using the DMM, measure the resistance in each resistor.
+\item
+Using the DMM and its leads, the DC Power Supply and its leads, a breadboard, and 
+the resistors, create the circuit described in Figure 1.
+\item
+Using the DMM, measure the voltage across each resistor.
+\item
+Return all materials to the appropriate locations in the laboratory.
+\end{enumerate}
+
+\section{Collected Data}
+
+The following table shows the measured data and relevant calculations.
+Resistance and Voltage were measured using a DMM. Power was calculated using
+$P=V^{2}/R$ and current was calculated using $I=V/R$.
+
+\newpage
+
+% table for measured values
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+\caption{Measured Component Resistance, Voltage, Power, and Current}
+\label{table_measured_rvpi}
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Component Name & Resistance & Voltage & Power & Current\\
+\hline
+V1 & NC & 5.018 V & *6.955 $\mu$W & *1.394 $\mu$A\\
+\hline
+R1 & 3.62M $\Omega$ & 5.017 V & 6.95 $\mu$W & 1.386 $\mu$A\\
+\hline
+R2 & .61 k$\Omega$ & .847 mV & 1.18 nW & 1.389 $\mu$A\\
+\hline
+R3 & 2.3 $\Omega$ & .003 mV & 3.91 pW & 1.304 $\mu$A\\
+\hline
+\end{tabular}
+\end{table}
+
+*Calculated by summing the measured resistances and using the result as $R$ in the formulas.
+
+No resistor exceeded its .25 W power rating.
+
+\section{Comparison}
+
+The following formula is used to determine experimental error
+
+Percent Error = $\frac{\textrm{observed value} - \textrm{ideal value}}{\textrm{ideal value}}\cdot 100$
+
+% table for error percentages
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+\caption{Percent Error}
+\label{table_error}
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Component Name & Resistance & Voltage & Power & Current\\
+\hline
+V1 & *NA & .36 & .144 & .360\\
+\hline
+R1 & .556 & .34 & .072 & -.216\\
+\hline
+R2 & -1.61 & -1.65 & -1.34 & 0\\
+\hline
+R3 & 4.54  & -1.83 & -7.89 & -6.12\\
+\hline
+\end{tabular}
+\end{table}
+
+*The resistance of the power source was never independently measured.
+
+\section{Conclusion}
+
+Ohm's law has held within significant figures. The measurements of the resistors proved
+they were within tolerance. Observation of the error percentages shows a clear trend
+toward increased error further down the circuit. The placement of elements R2 and R3 further 
+along the circuit, in combination with the fact that the strongest resistor was placed 
+first in series, both contribute to these increased error percentages. 
+
+In addition, a suspected incorrect measurement of the voltage on R3, and the relatively large difference between the measured resistance of R3 and its ideal value, both contributed to higher errors on the power and current calculations of R3.
+
+%use this if you only have one appendix. (Don't we all? Well, some people don't have ANY!)
+\appendix[Maximum Working Voltage Formula]
+
+% use something like the one below if you have more than one appendix.
+
+%\appendices
+%\section{Proof of the First Zonklar Equation}
+%Appendix one text goes here.
+
+% you can choose not to have a title for an appendix
+% if you want by leaving the argument blank
+%\section{}
+%Appendix two text goes here.
+
+First, observe the fact that components in series will share the same current. That is,
+
+\vspace{3mm}
+$I_{total}=I_{1}=I_{2}=\dots=I_{n}$
+\vspace{3mm}
+
+Now, using Ohm's law and the formula for power, we can derive an expression for the power
+in a component. Consider
+
+\begin{align*}
+P_{n}&=I_{n}\cdot\,V_{n}\\
+&=I_{n}^{2}\cdot\,R_{n}\\
+&=\left(\frac{V_{max}}{R_{1}+R_{2}+\dots+R_{n}}\right)^{2}\cdot\,R_{n}
+\end{align*}
+
+In our case with three resistors and $R_{1}$ absorbing most of the voltage, the formula
+looks like so
+
+\vspace{3mm}
+$P=\left(\frac{V_{max}}{R_{1}+R_{2}+R_{3}}\right)^{2}\cdot\,R_{1}$
+\vspace{3mm}
+
+Our resistors have a maximum power rating of .25 Watts. Given this information, we can find
+the formula for the maximum working voltage with algebra
+
+\begin{align*}
+.25W&=\left(\frac{V_{max}}{R_{1}+R_{2}+R_{3}}\right)^{2}\cdot\,R_{1}\\
+\frac{.25W}{R_{1}}&=\left(\frac{V_{max}}{R_{1}+R_{2}+R_{3}}\right)^{2}\\
+\sqrt{\frac{.25W}{R_{1}}}&=\left(\frac{V_{tot}}{R_{1}+R_{2}+R_{3}}\right)\\
+V_{max}&=\left(R_{1}+R_{2}+R_{3}\right)\cdot\sqrt{\frac{.25W}{R_{1}}}
+\end{align*}
+
+\end{document}
+
+
