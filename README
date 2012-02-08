@@ -2,7 +2,7 @@ I'm assuming you already have some sort of TeX suite installed on your system.
 Something like TexLive would work. Once you have that installed, you can
 compile your .tex files using something like this to make pdf's:
 
-pdflatex mylatexfile.tex
+$ pdflatex mylatexfile.tex
 
 Make sure the "IEEEtran.cls" file is in the same directory as the tex file
 you are compiling. Or you can compile it into your TeX suite. Either way.
@@ -12,11 +12,10 @@ I've included a pdf of my first lab report to give you an example of what
 output can look like. It's in this repo as "example.pdf". You'll have to
 clone the repo to see it though. This command should do the trick.
 
-mkdir sometempfolder
-cd sometempfolder
-git clone https://github.com/aspensmonster/latexShellFile
+$ mkdir sometempfolder
+$ cd sometempfolder
+$ git clone https://github.com/aspensmonster/latexShellFile
 
-If for some reason you can't get the example pdf from cloning, then grab
-it from here:
+If for some reason you can't get the example pdf from cloning, or have no idea what "cloning" means, then you can grab it from here:
 
 http://aspensmonster.com/example.pdf
