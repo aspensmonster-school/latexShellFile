@@ -7,3 +7,6 @@ pdflatex mylatexfile.tex
 Make sure the "IEEEtran.cls" file is in the same directory as the tex file
 you are compiling. Or you can compile it into your TeX suite. Either way.
 No pressure. 
+
+I've included a pdf of my first lab report to give you an example of what
+output can look like. It's in this repo as "example.pdf".
