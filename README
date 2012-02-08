@@ -1,0 +1,9 @@
+I'm assuming you already have some sort of TeX suite installed on your system.
+Something like TexLive would work. Once you have that installed, you can
+compile your .tex files using something like this to make pdf's:
+
+pdflatex mylatexfile.tex
+
+Make sure the "IEEEtran.cls" file is in the same directory as the tex file
+you are compiling. Or you can compile it into your TeX suite. Either way.
+No pressure. 
